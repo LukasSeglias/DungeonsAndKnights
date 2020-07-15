@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_empty_open_anim_f0.png-65294e0d9456bf94501c0363a87e278f.stex"
+path="res://.import/chest_mimic_open_anim_f2.png-f147564d850dcf54e5e31ddc919bd20d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/chest_empty_open_anim_f0.png"
-dest_files=[ "res://.import/chest_empty_open_anim_f0.png-65294e0d9456bf94501c0363a87e278f.stex" ]
+source_file="res://chest_mimic_open_anim_f2.png"
+dest_files=[ "res://.import/chest_mimic_open_anim_f2.png-f147564d850dcf54e5e31ddc919bd20d.stex" ]
 
 [params]
 
