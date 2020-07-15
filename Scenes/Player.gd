@@ -7,10 +7,11 @@ const MAX_SPEED = 100
 var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
-onready var weapon = $Weapon
+var weapon
+var nearbyChest
 
 func _ready():
-	pass
+	_switchWeapon(preload("res://Scenes/WeaponRegularSword.tscn"))
 
 
 func _process(delta):
@@ -21,6 +22,22 @@ func _physics_process(delta):
 	var input = _getMovementInputVector()
 	_playMovementAnimation(input)
 	_moveBasedOnInput(delta, input)
+	_handleActionInput()
+	if(Input.is_action_just_pressed("attack")):
+		weapon.attack()
+
+func _switchWeapon(weaponScene):
+	if(weapon != null):
+		remove_child(weapon)
+		weapon.queue_free()
+	weapon = weaponScene.instance()
+	add_child(weapon)
+
+
+func _handleActionInput():
+	if(Input.is_action_just_pressed("action")):
+		if(nearbyChest != null):
+			nearbyChest.open()
 
 
 func _getMovementInputVector():
@@ -53,5 +70,10 @@ func _playMovementAnimation(input):
 		animationPlayer.play("Idle")
 
 
-func _on_Coin_body_entered(body):
+func collectCoin(coin):
 	print("Coin collected!")
+
+func nearChest(chest):
+	print("Near chest!")
+	nearbyChest = chest
+
