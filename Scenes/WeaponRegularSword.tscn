@@ -30,9 +30,9 @@ script = ExtResource( 2 )
 position = Vector2( 0, -7 )
 texture = ExtResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2( 0, -10.5 )
 shape = SubResource( 1 )
 

@@ -4,11 +4,23 @@ const FRICTION = 500
 const ACCELERATION = 500
 const MAX_SPEED = 100
 
+export (int) var health = 100
+export (int) var damage = 20
+
 var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 var weapon
 var nearbyChest
+
+func wasAttacked(attacker, damage):
+	print("Player attacked")
+	if self == attacker:
+		return
+	
+	health -= damage
+	if health <= 0:
+		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
 func _ready():
 	_switchWeapon(preload("res://Scenes/WeaponRegularSword.tscn"))
@@ -24,7 +36,7 @@ func _physics_process(delta):
 	_moveBasedOnInput(delta, input)
 	_handleActionInput()
 	if(Input.is_action_just_pressed("attack")):
-		weapon.attack()
+		weapon.attack(damage)
 
 func _switchWeapon(weaponScene):
 	if(weapon != null):
@@ -32,6 +44,7 @@ func _switchWeapon(weaponScene):
 		weapon.queue_free()
 	weapon = weaponScene.instance()
 	add_child(weapon)
+	weapon.init(false)
 
 
 func _handleActionInput():
