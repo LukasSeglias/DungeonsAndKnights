@@ -10,15 +10,21 @@ onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	area.connect("body_entered", self, "_on_body_entered")
+	area.connect("body_exited", self, "_on_body_exited")
 
 
 func _on_body_entered(body):
 	if(body.is_in_group("Player")):
-		body.nearChest(self)
+		body.enterChest(self)
 
+
+func _on_body_exited(body):
+	if(body.is_in_group("Player")):
+		body.exitChest(self)
 
 func open():
 	if(!open):
+		open = true
 		if(full):
 			animationPlayer.play("empty_open")
 		else:
