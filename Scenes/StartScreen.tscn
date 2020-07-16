@@ -39,7 +39,7 @@ autoplay = "Fade"
 anims/Fade = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="Content/AnimationPlayer"]
-modulate = Color( 1, 1, 1, 0.835 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 13.0
 margin_top = 40.0
 margin_right = 313.0

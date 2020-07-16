@@ -47,3 +47,4 @@ texture_normal = ExtResource( 5 )
 texture_hover = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameOption" to="." method="_on_option_new_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsOption" to="." method="_on_option_credits_pressed"]
