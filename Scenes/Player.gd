@@ -86,7 +86,12 @@ func _playMovementAnimation(input):
 func collectCoin(coin):
 	print("Coin collected!")
 
-func nearChest(chest):
-	print("Near chest!")
-	nearbyChest = chest
+func enterChest(chest):
+	if(!chest.open):
+		print("Near chest!")
+		nearbyChest = chest
 
+func exitChest(chest):
+	if(chest == nearbyChest):
+		print("Leave chest!")
+		nearbyChest = null
