@@ -6,9 +6,18 @@
 
 [node name="Ork" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+detect_radius = 100
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+
+[node name="Stats" parent="." index="2"]
+max_health = 60
+health = 60
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, 0 )
+scale = Vector2( 1, 1 )
 
 [editable path="Hurtbox"]
 

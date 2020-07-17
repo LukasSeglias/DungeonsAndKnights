@@ -40,8 +40,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 2.08095
-height = 17.5005
+radius = 2.378
+height = 6.296
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 6.46938
@@ -56,6 +56,7 @@ height = 4.0
 "Enemy",
 ]]
 script = ExtResource( 1 )
+detect_radius = 40
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.353554, -7.15945 )
@@ -70,9 +71,7 @@ position = Vector2( -7.85722, -20.2744 )
 health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.0180702, 0.0163441 )
 rotation = 1.5708
-scale = Vector2( 1, 0.5 )
 shape = SubResource( 3 )
 
 [node name="Visibility" type="Area2D" parent="."]
