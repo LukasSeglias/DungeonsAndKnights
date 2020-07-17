@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/ork.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Ork.gd" type="Script" id=2]
+[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -42,8 +45,12 @@ radius = 2.08095
 height = 17.5005
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 8.21565
-height = 4.26144
+radius = 7.0593
+height = 4.39678
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 6.46938
+height = 6.04858
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "Attackable",
@@ -61,6 +68,9 @@ frame = 4
 anims/Idle = SubResource( 1 )
 anims/Run = SubResource( 2 )
 
+[node name="Stats" parent="." instance=ExtResource( 3 )]
+health = 100
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0180702, 0.0163441 )
 rotation = 1.5708
@@ -71,11 +81,22 @@ shape = SubResource( 3 )
 
 [node name="DetectionShape" type="CollisionShape2D" parent="Visibility"]
 
-[node name="Body" type="Area2D" parent="."]
-collision_mask = 3
+[node name="Hitbox" parent="." instance=ExtResource( 5 )]
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-position = Vector2( 0.420448, -6.51694 )
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 13.9221, -7.19704 )
 shape = SubResource( 4 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+collision_layer = 2147483664
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0.353951, -7.31503 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="Visibility" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_detection_shape_body_exited"]
+
+[editable path="Hitbox"]
+
+[editable path="Hurtbox"]
