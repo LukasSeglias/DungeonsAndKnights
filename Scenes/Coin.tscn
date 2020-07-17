@@ -37,9 +37,12 @@ frame = 3
 autoplay = "Spin"
 anims/Spin = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
 [node name="CoinAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
 [connection signal="finished" from="CoinAudio" to="." method="animationFinished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
