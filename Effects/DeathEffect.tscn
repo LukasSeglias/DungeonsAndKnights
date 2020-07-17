@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sounds/death_moan.wav" type="AudioStream" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _on_DeathSound_finished():
+	queue_free()
+"
+
+[node name="DeathEffect" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = 2.0
+autoplay = true
+[connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]

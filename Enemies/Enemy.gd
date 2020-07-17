@@ -14,6 +14,8 @@ onready var stats = $Stats
 onready var hurtbox = $Hurtbox
 onready var weaponSlot = $WeaponSlot
 
+const deathEffect = preload("res://Effects/DeathEffect.tscn")
+
 var target
 var velocity = Vector2.ZERO
 var can_see = true
@@ -30,6 +32,7 @@ func _ready():
 
 
 func _on_Stats_no_health():
+	get_parent().add_child(deathEffect.instance())
 	queue_free()
 
 
