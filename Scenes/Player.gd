@@ -12,17 +12,14 @@ export (int) var weaponDistance = 10
 var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
-onready var weaponPosition = $WeaponPosition
+onready var weaponSlot = $WeaponSlot
 onready var stats = $Stats
 onready var hitbox = $Hitbox
-onready var hitboxPositionLeft = $HitboxPosition/Left
-onready var hitboxPositionRight = $HitboxPosition/Right
 
-var weapon
 var nearbyChest
 
 func _ready():
-	_switchWeapon(preload("res://Weapons/WeaponRegularSword.tscn"))
+	pass
 
 
 func _process(delta):
@@ -35,15 +32,7 @@ func _physics_process(delta):
 	_moveBasedOnInput(delta, input)
 	_handleActionInput()
 	if(Input.is_action_just_pressed("attack")):
-		weapon.attack(damage)
-
-func _switchWeapon(weaponScene):
-	if(weapon != null):
-		remove_child(weapon)
-		weapon.queue_free()
-	weapon = weaponScene.instance()
-	add_child(weapon)
-	weapon.position = weaponPosition.position
+		weaponSlot.attack(damage)
 
 
 func _handleActionInput():
@@ -71,12 +60,10 @@ func _playMovementAnimation(input):
 	if input != Vector2.ZERO:
 		if input.x > 0:
 			sprite.flip_h = false
-			weapon.direction = Direction.RIGHT
-			hitbox.position = hitboxPositionRight.position
+			weaponSlot.direction = Direction.RIGHT
 		elif input.x < 0:
 			sprite.flip_h = true
-			weapon.direction = Direction.LEFT
-			hitbox.position = hitboxPositionLeft.position
+			weaponSlot.direction = Direction.LEFT
 		else:
 			pass # do not flip
 		animationPlayer.play("RunLeft")
@@ -101,7 +88,6 @@ func exitChest(chest):
 
 
 func _on_Hurtbox_was_hurt(damage):
-	print("Player was hurt: " + String(damage))
 	stats.health -= damage
 
 

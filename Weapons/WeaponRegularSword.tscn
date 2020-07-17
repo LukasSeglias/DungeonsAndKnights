@@ -8,5 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
-rotation = 0.0
+rotation = 4.55531
 texture = ExtResource( 3 )
+
+[editable path="Hitbox"]

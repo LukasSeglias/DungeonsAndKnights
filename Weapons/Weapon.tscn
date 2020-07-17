@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Weapons/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/HitboxPosition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sounds/sword.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "IdleLeft"
@@ -31,6 +33,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:playingAttackAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.4
@@ -58,6 +72,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:playingAttackAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -101,6 +127,35 @@ tracks/2/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:playingAttackAnimation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "_weaponHurts"
+}, {
+"args": [ false ],
+"method": "_weaponHurts"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.2
@@ -141,6 +196,35 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:playingAttackAnimation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "_weaponHurts"
+}, {
+"args": [ false ],
+"method": "_weaponHurts"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -184,9 +268,10 @@ tracks/2/keys = {
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource( 1 )
+playingAttackAnimation = true
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = -1.5708
+rotation = 1.5708
 offset = Vector2( 0, -7.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -198,3 +283,10 @@ anims/Swing = SubResource( 5 )
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="HitboxPosition" parent="." instance=ExtResource( 2 )]
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 14, -7 )
+
+[editable path="Hitbox"]

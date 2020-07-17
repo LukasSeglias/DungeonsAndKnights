@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/HitboxPosition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Weapons/WeaponSlot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/knight.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
@@ -85,13 +84,13 @@ tracks/1/keys = {
 radius = 2.37782
 height = 6.29645
 
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 7.0
+height = 8.0
+
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 6.52121
 height = 3.65993
-
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 7.2291
-height = 8.02885
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Attackable",
@@ -118,8 +117,18 @@ position = Vector2( 0.100944, -0.103315 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
-[node name="WeaponPosition" type="Position2D" parent="."]
-position = Vector2( -3.30357, -2.2417 )
+[node name="WeaponSlot" parent="." instance=ExtResource( 6 )]
+weapon_name = "WeaponRegularSword"
+
+[node name="Hitbox" parent="WeaponSlot" index="0"]
+position = Vector2( 14, -7 )
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="WeaponSlot/Hitbox" index="0"]
+shape = SubResource( 6 )
+
+[node name="WeaponPosition" parent="WeaponSlot" index="2"]
+position = Vector2( -3, -2 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 collision_layer = 2147483652
@@ -127,18 +136,11 @@ collision_layer = 2147483652
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -6.60712 )
 shape = SubResource( 5 )
-
-[node name="Hitbox" parent="." instance=ExtResource( 3 )]
-position = Vector2( 14, -7 )
-collision_mask = 16
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 6 )
-
-[node name="HitboxPosition" parent="." instance=ExtResource( 5 )]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="was_hurt" from="Hurtbox" to="." method="_on_Hurtbox_was_hurt"]
 
-[editable path="Hurtbox"]
+[editable path="WeaponSlot"]
 
-[editable path="Hitbox"]
+[editable path="WeaponSlot/Hitbox"]
+
+[editable path="Hurtbox"]
