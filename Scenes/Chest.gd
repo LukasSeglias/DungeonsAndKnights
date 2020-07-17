@@ -6,7 +6,7 @@ export var open = false setget set_open
 
 onready var area = $Area2D
 onready var animationPlayer = $AnimationPlayer
-
+onready var chestOpeningAudio = $ChestOpeningAudio
 
 func _ready():
 	area.connect("body_entered", self, "_on_body_entered")
@@ -25,6 +25,7 @@ func _on_body_exited(body):
 func open():
 	if(!open):
 		open = true
+		chestOpeningAudio.play()
 		if(full):
 			animationPlayer.play("empty_open")
 		else:

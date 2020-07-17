@@ -3,6 +3,7 @@ extends Node2D
 
 onready var animationPlayer = $AnimationPlayer
 onready var hurtBox = $HurtBox
+onready var spearAudio = $SpearAudio
 
 var _damage = 0
 
@@ -23,6 +24,7 @@ func _ready():
 func attack(damage):
 	_damage = damage
 	animationPlayer.play("Swing")
+	spearAudio.play()
 	
 func hasAttacked(body):
 	print("weapon attacked")

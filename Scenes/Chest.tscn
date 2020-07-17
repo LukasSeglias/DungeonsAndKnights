@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Chest.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/chest_opening.wav" type="AudioStream" id=2]
 [ext_resource path="res://Sprites/chest.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
@@ -84,3 +85,6 @@ shape = SubResource( 4 )
 position = Vector2( 0, -2.44997 )
 rotation = 1.5708
 shape = SubResource( 5 )
+
+[node name="ChestOpeningAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

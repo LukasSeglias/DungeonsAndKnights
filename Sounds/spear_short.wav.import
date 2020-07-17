@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spear_short.wav-06468183034ca91cb1f2666b7f1b766f.sample"
+
+[deps]
+
+source_file="res://Sounds/spear_short.wav"
+dest_files=[ "res://.import/spear_short.wav-06468183034ca91cb1f2666b7f1b766f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
