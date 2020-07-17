@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/pixelated/pixelated.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sounds/game_over.wav" type="AudioStream" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "BlendText"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="CenterContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 55
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 50.0
+margin_top = 55.0
+margin_right = 279.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+text = "Game Over"
+scroll_active = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "BlendText"
+anims/BlendText = SubResource( 2 )
+[connection signal="timeout" from="Timer" to="." method="switchToMainMenu"]

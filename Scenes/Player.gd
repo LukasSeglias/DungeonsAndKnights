@@ -20,7 +20,7 @@ func wasAttacked(attacker, damage):
 	
 	health -= damage
 	if health <= 0:
-		get_tree().change_scene("res://Scenes/MainMenu.tscn")
+		get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _ready():
 	_switchWeapon(preload("res://Scenes/WeaponRegularSword.tscn"))
