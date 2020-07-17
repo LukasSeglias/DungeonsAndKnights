@@ -7,20 +7,16 @@ const MAX_SPEED = 100
 export (int) var health = 100
 export (int) var damage = 20
 
+export (int) var weaponDistance = 10
+
 var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
+onready var weaponPosition = $WeaponPosition
+onready var stats = $Stats
+
 var weapon
 var nearbyChest
-
-func wasAttacked(attacker, damage):
-	print("Player attacked")
-	if self == attacker:
-		return
-	
-	health -= damage
-	if health <= 0:
-		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
 func _ready():
 	_switchWeapon(preload("res://Scenes/WeaponRegularSword.tscn"))
@@ -44,7 +40,7 @@ func _switchWeapon(weaponScene):
 		weapon.queue_free()
 	weapon = weaponScene.instance()
 	add_child(weapon)
-	weapon.init(false)
+	weapon.position = weaponPosition.position
 
 
 func _handleActionInput():
@@ -72,10 +68,10 @@ func _playMovementAnimation(input):
 	if input != Vector2.ZERO:
 		if input.x > 0:
 			sprite.flip_h = false
-			weapon.rotation_degrees = 90
+			weapon.rotation_degrees = 0
 		elif input.x < 0:
 			sprite.flip_h = true
-			weapon.rotation_degrees = -90
+			weapon.rotation_degrees = 180
 		else:
 			pass # do not flip
 		animationPlayer.play("RunLeft")
@@ -86,12 +82,23 @@ func _playMovementAnimation(input):
 func collectCoin(coin):
 	print("Coin collected!")
 
+
 func enterChest(chest):
 	if(!chest.open):
 		print("Near chest!")
 		nearbyChest = chest
 
+
 func exitChest(chest):
 	if(chest == nearbyChest):
 		print("Leave chest!")
 		nearbyChest = null
+
+
+func _on_Hurtbox_was_hurt(damage):
+	print("Player was hurt: " + String(damage))
+	stats.health -= damage
+
+
+func _on_Stats_no_health():
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")

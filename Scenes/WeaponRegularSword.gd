@@ -8,17 +8,6 @@ var _damage = 0
 
 func _ready():
 	pass
-
-
-func init(isEnemy):
-	var layerBit = 1
-	var maskBit = 0
-	if isEnemy:
-		layerBit = 0
-		maskBit = 1
-	hurtBox.set_collision_layer_bit(2, true)
-	hurtBox.set_collision_mask_bit(layerBit, false)
-	hurtBox.set_collision_mask_bit(maskBit, true)
 	
 
 func attack(damage):

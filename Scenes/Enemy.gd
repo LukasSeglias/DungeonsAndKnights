@@ -1,11 +1,6 @@
 extends KinematicBody2D
 class_name Enemy
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 export (int) var detect_radius = 20
 export (bool) var show_radius = true
 export (int) var damage = 10
@@ -17,6 +12,8 @@ export (String) var weapon_name
 onready var animationPlayer = $AnimationPlayer
 onready var detectionShape = $Visibility/DetectionShape
 onready var sprite = $Sprite
+onready var stats = $Stats
+onready var hurtbox = $Hurtbox
 
 var target
 var velocity = Vector2.ZERO
@@ -25,13 +22,6 @@ var vis_color = Color(.867, .91, .247, 0.1)
 var weapon
 var previous_attack = 0;
 
-func wasAttacked(attacker, damage):
-	print("Enemy attacked")
-	if self == attacker || attacker.is_in_group("Enemy"):
-		return
-	health -= damage
-	if health <= 0:
-		queue_free()
 
 func _ready():
 	var shape = CircleShape2D.new()
@@ -39,6 +29,17 @@ func _ready():
 	detectionShape.shape = shape
 	if !weapon_name.empty():
 		_switchWeapon(load("res://" + weapon_name))
+	stats.connect("no_health", self, "_on_Stats_no_health")
+	hurtbox.connect("was_hurt", self, "_on_Hurtbox_was_hurt")
+
+
+func _on_Stats_no_health():
+	queue_free()
+
+
+func _on_Hurtbox_was_hurt(damage):
+	stats.health -= damage
+
 
 func _switchWeapon(weaponScene):
 	if(weapon != null):
@@ -46,7 +47,6 @@ func _switchWeapon(weaponScene):
 		weapon.queue_free()
 	weapon = weaponScene.instance()
 	add_child(weapon)
-	weapon.init(true)
 
 func _physics_process(delta):
 	update()
