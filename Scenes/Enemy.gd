@@ -14,6 +14,9 @@ onready var detectionShape = $Visibility/DetectionShape
 onready var sprite = $Sprite
 onready var stats = $Stats
 onready var hurtbox = $Hurtbox
+onready var hitbox = $Hitbox
+onready var hitboxPositionLeft = $HitboxPosition/Left
+onready var hitboxPositionRight = $HitboxPosition/Right
 
 var target
 var velocity = Vector2.ZERO
@@ -71,12 +74,17 @@ func attack():
 
 func moveSpriteAgainstPlayer():
 	var collision = (position - target.position).normalized()
-	if collision.x >= 0:
+	
+	if collision.x > 0:
 		sprite.flip_h = true
-		weapon.rotation_degrees = 90
-	else:
+		weapon.direction = Direction.LEFT
+		hitbox.position = hitboxPositionLeft.position
+	elif collision.x < 0:
 		sprite.flip_h = false
-		weapon.rotation_degrees = -90
+		weapon.direction = Direction.RIGHT
+		hitbox.position = hitboxPositionRight.position
+	else:
+		pass # do not flip
 	
 func goToPlayer(delta):
 	animationPlayer.play("Run")

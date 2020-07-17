@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Direction",
+"language": "GDScript",
+"path": "res://Scenes/Direction.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Scenes/Enemy.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
-"Enemy": ""
+"Direction": "",
+"Enemy": "",
+"Weapon": ""
 }
 
 [application]

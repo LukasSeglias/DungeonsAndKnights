@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprites/ork.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Ork.gd" type="Script" id=2]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/HitboxPosition.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -62,7 +63,6 @@ script = ExtResource( 2 )
 position = Vector2( 0.353554, -7.15945 )
 texture = ExtResource( 1 )
 hframes = 8
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
@@ -82,10 +82,10 @@ shape = SubResource( 3 )
 [node name="DetectionShape" type="CollisionShape2D" parent="Visibility"]
 
 [node name="Hitbox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 14, -7 )
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2( 13.9221, -7.19704 )
 shape = SubResource( 4 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
@@ -94,6 +94,8 @@ collision_layer = 2147483664
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0.353951, -7.31503 )
 shape = SubResource( 5 )
+
+[node name="HitboxPosition" parent="." instance=ExtResource( 6 )]
 [connection signal="body_entered" from="Visibility" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_detection_shape_body_exited"]
 

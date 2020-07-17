@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="HitboxPosition" type="Node2D"]
+
+[node name="Left" type="Position2D" parent="."]
+position = Vector2( -14, -7 )
+
+[node name="Right" type="Position2D" parent="."]
+position = Vector2( 14, -7 )

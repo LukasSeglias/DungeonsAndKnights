@@ -14,12 +14,15 @@ onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 onready var weaponPosition = $WeaponPosition
 onready var stats = $Stats
+onready var hitbox = $Hitbox
+onready var hitboxPositionLeft = $HitboxPosition/Left
+onready var hitboxPositionRight = $HitboxPosition/Right
 
 var weapon
 var nearbyChest
 
 func _ready():
-	_switchWeapon(preload("res://Scenes/WeaponRegularSword.tscn"))
+	_switchWeapon(preload("res://Weapons/WeaponRegularSword.tscn"))
 
 
 func _process(delta):
@@ -68,10 +71,12 @@ func _playMovementAnimation(input):
 	if input != Vector2.ZERO:
 		if input.x > 0:
 			sprite.flip_h = false
-			weapon.rotation_degrees = 0
+			weapon.direction = Direction.RIGHT
+			hitbox.position = hitboxPositionRight.position
 		elif input.x < 0:
 			sprite.flip_h = true
-			weapon.rotation_degrees = 180
+			weapon.direction = Direction.LEFT
+			hitbox.position = hitboxPositionLeft.position
 		else:
 			pass # do not flip
 		animationPlayer.play("RunLeft")
