@@ -15,6 +15,7 @@ onready var sprite = $Sprite
 onready var weaponSlot = $WeaponSlot
 onready var stats = $Stats
 onready var hitbox = $Hitbox
+onready var playerStats = $PlayerStats
 
 var nearbyChest
 
@@ -38,7 +39,7 @@ func _physics_process(delta):
 func _handleActionInput():
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyChest != null):
-			nearbyChest.open()
+			nearbyChest.open(self)
 
 
 func _getMovementInputVector():
@@ -71,8 +72,8 @@ func _playMovementAnimation(input):
 		animationPlayer.play("Idle")
 
 
-func collectCoin(coin):
-	print("Coin collected!")
+func collectCoins(coins):
+	playerStats.collectCoin(coins)
 
 
 func enterChest(chest):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stats/PlayerStats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Weapons/WeaponSlot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/knight.png" type="Texture" id=10]
@@ -84,11 +85,11 @@ tracks/1/keys = {
 radius = 2.37782
 height = 6.29645
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 7.0
 height = 8.0
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 6.52121
 height = 3.65993
 
@@ -105,6 +106,7 @@ texture = ExtResource( 10 )
 hframes = 9
 
 [node name="Stats" parent="." instance=ExtResource( 2 )]
+position = Vector2( -11.1544, -21.4671 )
 health = 100
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -117,6 +119,8 @@ position = Vector2( 0.100944, -0.103315 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
+[node name="PlayerStats" parent="." instance=ExtResource( 3 )]
+
 [node name="WeaponSlot" parent="." instance=ExtResource( 6 )]
 weapon_name = "WeaponRegularSword"
 
@@ -125,7 +129,7 @@ position = Vector2( 14, -7 )
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="WeaponSlot/Hitbox" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="WeaponPosition" parent="WeaponSlot" index="2"]
 position = Vector2( -3, -2 )
@@ -135,7 +139,7 @@ collision_layer = 2147483652
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -6.60712 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="was_hurt" from="Hurtbox" to="." method="_on_Hurtbox_was_hurt"]
 

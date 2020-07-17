@@ -12,7 +12,7 @@ func _on_body_entered(body):
 	if(body.is_in_group("Player")):
 		visible = false
 		coinAudio.play()
-		body.collectCoin(self)
+		body.collectCoins(1)
 
 func animationFinished():
 	queue_free()

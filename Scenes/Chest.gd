@@ -1,8 +1,7 @@
 extends StaticBody2D
 
-
-export var full = true setget set_full
 export var open = false setget set_open
+export(int) var coins = 50
 
 onready var area = $Area2D
 onready var animationPlayer = $AnimationPlayer
@@ -22,19 +21,15 @@ func _on_body_exited(body):
 	if(body.is_in_group("Player")):
 		body.exitChest(self)
 
-func open():
+func open(body):
 	if(!open):
 		open = true
 		chestOpeningAudio.play()
-		if(full):
-			animationPlayer.play("empty_open")
-		else:
+		if(coins > 0):
 			animationPlayer.play("full_open")
-
-
-func set_full(value):
-	full = value
-
+			body.collectCoins(coins)
+		else:
+			animationPlayer.play("empty_open")
 
 func set_open(value):
 	open = value

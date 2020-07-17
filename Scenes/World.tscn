@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Chest.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Enemies/Ork.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/walls_new.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/ambience.wav" type="AudioStream" id=7]
+[ext_resource path="res://Stats/CoinsDisplay.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -649,11 +650,9 @@ position = Vector2( 71.5149, 113.663 )
 collision_mask = 3
 detect_radius = 40
 speed = 1000
-weapon_name = "Weapons/WeaponSpear.tscn"
 
 [node name="Chest" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 25.3898, 36.6642 )
-full = false
 
 [node name="Chest2" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 174.308, 82.0424 )
@@ -692,3 +691,14 @@ position = Vector2( 247.898, 145.261 )
 stream = ExtResource( 7 )
 volume_db = 2.0
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CoinsDisplay" parent="CanvasLayer" instance=ExtResource( 8 )]
+margin_left = 286.907
+margin_top = 2.80164
+margin_right = 316.907
+margin_bottom = 11.8016
+[connection signal="coins_collected" from="YSort/Player/PlayerStats" to="CanvasLayer/CoinsDisplay" method="_on_PlayerStats_coins_collected"]
+
+[editable path="YSort/Player"]
