@@ -17,9 +17,9 @@ func taken(body):
 	if(amount > 0):
 		animationPlayer.play("full_open")
 		if content == ChestContent.COINS:
-			body.collectCoins(amount)
+			body.collect(CollectableType.COIN, amount)
 		elif content == ChestContent.POTION_HEAL:
-			body.collectPotion(PotionType.HEAL, amount)
+			body.collect(CollectableType.POTION_HEAL, amount)
 
 	else:
 		animationPlayer.play("empty_open")

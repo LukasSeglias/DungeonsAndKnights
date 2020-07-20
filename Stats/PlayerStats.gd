@@ -2,28 +2,23 @@ extends Node2D
 
 onready var potionDrinkSound = $PotionDrinkSound
 
-var coins = 0
-var potions = {
-	PotionType.HEAL: 0
+var collectables = {
+	CollectableType.COIN: 0,
+	CollectableType.POTION_HEAL: 0
 }
 
-signal coins_collected(coins)
-signal potion_updated(potions)
+signal collectables_updated(collectables)
 
-func collectCoin(amount):
-	coins += amount
-	emit_signal("coins_collected", coins)
-	
-func collectPotion(potion, amount):
-	potions[potion] += amount
-	emit_signal("potion_updated", potions)
+func collect(collectableType, amount):
+	collectables[collectableType] += amount
+	emit_signal("collectables_updated", collectables)
 	
 func takePotion(potion):
-	var potionAmount = potions[potion]
+	var potionAmount = collectables[potion]
 	if potionAmount > 0:
 		potionDrinkSound.play()
-		potions[potion] = potionAmount - 1
-		emit_signal("potion_updated", potions)
+		collectables[potion] = potionAmount - 1
+		emit_signal("collectables_updated", collectables)
 		return 1
 	return 0
 

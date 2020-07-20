@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Collectables/Collectable.gd"
 }, {
 "base": "Reference",
+"class": "CollectableType",
+"language": "GDScript",
+"path": "res://Collectables/CollectableType.gd"
+}, {
+"base": "Reference",
 "class": "Direction",
 "language": "GDScript",
 "path": "res://Scenes/Direction.gd"
@@ -29,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Collectables/Potion.gd"
 }, {
-"base": "Reference",
-"class": "PotionType",
-"language": "GDScript",
-"path": "res://Collectables/PotionType.gd"
-}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -41,10 +41,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Collectable": "",
+"CollectableType": "",
 "Direction": "",
 "Enemy": "",
 "Potion": "",
-"PotionType": "",
 "Weapon": ""
 }
 

@@ -7,10 +7,10 @@
 [ext_resource path="res://Enemies/Ork.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/walls_new.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/ambience.wav" type="AudioStream" id=7]
-[ext_resource path="res://Stats/CoinsDisplay.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Stats/StatusBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Enemies.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/World.gd" type="Script" id=10]
-[ext_resource path="res://Stats/PotionDisplay.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Stats/StatusBar.gd" type="Script" id=11]
 [ext_resource path="res://Collectables/PotionHeal.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
@@ -956,8 +956,8 @@ position = Vector2( -269.902, 61.2731 )
 amount = 2
 content = 1
 
-[node name="PotionHeal" parent="YSort/Collectables" instance=ExtResource( 12 )]
-position = Vector2( -244.183, 59.6831 )
+[node name="PotionHeal" parent="." instance=ExtResource( 12 )]
+position = Vector2( -241.285, 60.7181 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
@@ -966,22 +966,16 @@ autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CoinsDisplay" parent="CanvasLayer" instance=ExtResource( 8 )]
-margin_left = 286.907
-margin_top = 2.80164
-margin_right = 316.907
-margin_bottom = 11.8016
-
-[node name="PotionDisplay" parent="CanvasLayer" instance=ExtResource( 11 )]
-margin_left = 240.853
-margin_top = 1.49831
-margin_right = 280.853
-margin_bottom = 12.4983
+[node name="StatusBar" parent="CanvasLayer" instance=ExtResource( 8 )]
+margin_left = 239.987
+margin_top = 1.25733
+margin_right = 319.987
+margin_bottom = 12.2573
+script = ExtResource( 11 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0
-[connection signal="coins_collected" from="YSort/Player/PlayerStats" to="CanvasLayer/CoinsDisplay" method="_on_PlayerStats_coins_collected"]
-[connection signal="potion_updated" from="YSort/Player/PlayerStats" to="CanvasLayer/PotionDisplay" method="_on_PlayerStats_potion_updated"]
+[connection signal="collectables_updated" from="YSort/Player/PlayerStats" to="CanvasLayer/StatusBar" method="_on_PlayerStats_collectables_updated"]
 [connection signal="navigation_request" from="YSort/Enemies" to="." method="_on_Enemies_navigation_request"]
 
 [editable path="YSort/Player"]
