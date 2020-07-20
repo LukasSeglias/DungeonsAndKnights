@@ -1,9 +1,6 @@
 extends StaticBody2D
 class_name Collectable
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 onready var sound = $CollectableSound
 
