@@ -1,5 +1,4 @@
-extends Collectable
-
+extends Potion
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,9 +9,8 @@ extends Collectable
 func _ready():
 	pass # Replace with function body.
 	
-func taken(body):
-	body.collectPotion(Potion.HEAL, 1)
-	queue_free()
+func potion_type():
+	return PotionType.HEAL
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

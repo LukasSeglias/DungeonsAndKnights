@@ -3,7 +3,7 @@ extends Node2D
 
 var coins = 0
 var potions = {
-	Potion.HEAL: 0
+	PotionType.HEAL: 0
 }
 
 signal coins_collected(coins)

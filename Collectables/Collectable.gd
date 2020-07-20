@@ -7,6 +7,8 @@ class_name Collectable
 
 onready var sound = $CollectableSound
 
+var alreadyTaken = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,14 +22,12 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if(body.is_in_group("Player")):
 		body.exitCollectable(self)
-
-func can_take():
-	return true;
 	
 func taken(body):
 	pass
 
 func take(body):
-	if(can_take()):
+	if not alreadyTaken:
+		alreadyTaken = true
 		sound.play()
 		taken(body);
