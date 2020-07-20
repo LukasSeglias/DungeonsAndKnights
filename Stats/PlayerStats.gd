@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var potionDrinkSound = $PotionDrinkSound
 
 var coins = 0
 var potions = {
@@ -20,6 +21,7 @@ func collectPotion(potion, amount):
 func takePotion(potion):
 	var potionAmount = potions[potion]
 	if potionAmount > 0:
+		potionDrinkSound.play()
 		potions[potion] = potionAmount - 1
 		emit_signal("potion_updated", potions)
 		return 1
