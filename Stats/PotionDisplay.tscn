@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/pixelated/pixelated.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/potion_heal.png" type="Texture" id=2]
+[ext_resource path="res://Stats/PotionDisplay.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 1 )
+
+[node name="PotionDisplay" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 11.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealTexture" type="TextureRect" parent="."]
+margin_right = 10.0
+margin_bottom = 11.0
+texture = ExtResource( 2 )
+
+[node name="HealDisplay" type="RichTextLabel" parent="."]
+margin_left = 14.0
+margin_right = 40.0
+margin_bottom = 11.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+scroll_active = false

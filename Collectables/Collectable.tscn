@@ -3,11 +3,12 @@
 [ext_resource path="res://Collectables/Collectable.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 3.976
-height = 8.13463
+radius = 3.97602
+height = 9.19407
 
 [sub_resource type="CapsuleShape2D" id=2]
-height = 4.82719
+radius = 9.36354
+height = 7.29683
 
 [node name="Collectable" type="StaticBody2D"]
 script = ExtResource( 1 )

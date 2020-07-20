@@ -40,6 +40,9 @@ func _handleActionInput():
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyCollectable != null):
 			nearbyCollectable.take(self)
+	if(Input.is_action_just_pressed("potion_heal")):
+		var healPotion = playerStats.takePotion(Potion.HEAL)
+		stats.health += healPotion * 50
 
 
 func _getMovementInputVector():
@@ -74,7 +77,9 @@ func _playMovementAnimation(input):
 
 func collectCoins(coins):
 	playerStats.collectCoin(coins)
-
+	
+func collectPotion(potion, amount):
+	playerStats.collectPotion(potion, amount)
 
 func enterCollectable(collectable):
 	print("Near collectable!")

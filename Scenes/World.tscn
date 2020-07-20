@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=2]
+[gd_scene load_steps=120 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectables/Chest.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Stats/CoinsDisplay.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Enemies.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/World.gd" type="Script" id=10]
+[ext_resource path="res://Stats/PotionDisplay.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Collectables/PotionHeal.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -791,6 +793,7 @@ points = PoolVector2Array( 5.07565, 32, 0, 32, 0, 0, 5.07565, 0 )
 3/z_index = 0
 
 [node name="World" type="Node2D"]
+position = Vector2( -76.7883, -53.1899 )
 script = ExtResource( 10 )
 
 [node name="Ground" type="TileMap" parent="."]
@@ -921,6 +924,35 @@ position = Vector2( 247.898, 145.261 )
 [node name="Coin9" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 247.898, 145.261 )
 
+[node name="Coin10" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -275.273, 127.482 )
+
+[node name="Coin11" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -236.692, 128.98 )
+
+[node name="Collectables" type="YSort" parent="YSort"]
+
+[node name="Chest" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( -133.1, 88.3255 )
+
+[node name="Chest2" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( 225.323, -114.679 )
+
+[node name="Chest3" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( 104.52, 270.843 )
+
+[node name="Chest4" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( 146.568, 272.845 )
+
+[node name="Chest5" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( 187.28, 271.51 )
+
+[node name="Chest6" parent="YSort/Collectables" instance=ExtResource( 2 )]
+position = Vector2( -269.902, 61.2731 )
+
+[node name="PotionHeal" parent="YSort/Collectables" instance=ExtResource( 12 )]
+position = Vector2( -244.183, 59.6831 )
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = 2.0
@@ -934,57 +966,16 @@ margin_top = 2.80164
 margin_right = 316.907
 margin_bottom = 11.8016
 
-[node name="Coin" parent="." instance=ExtResource( 3 )]
-position = Vector2( 98.7628, 286.198 )
-
-[node name="Coin2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 135.532, 284.607 )
-
-[node name="Coin3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 170.888, 285.668 )
-
-[node name="Coin4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 123.335, 261.449 )
-
-[node name="Coin5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 164.7, 262.863 )
-
-[node name="Coin6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 83.2064, 255.969 )
-
-[node name="Coin7" parent="." instance=ExtResource( 3 )]
-position = Vector2( 202.707, 284.961 )
-
-[node name="Coin8" parent="." instance=ExtResource( 3 )]
-position = Vector2( 79.8477, 278.597 )
-
-[node name="Coin9" parent="." instance=ExtResource( 3 )]
-position = Vector2( 207.657, 265.515 )
-
-[node name="Coin10" parent="." instance=ExtResource( 3 )]
-position = Vector2( 198.995, 252.08 )
+[node name="PotionDisplay" parent="CanvasLayer" instance=ExtResource( 11 )]
+margin_left = 240.853
+margin_top = 1.49831
+margin_right = 280.853
+margin_bottom = 12.4983
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0
-
-[node name="Chest" parent="." instance=ExtResource( 2 )]
-position = Vector2( -133.1, 88.3255 )
-
-[node name="Chest2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 225.323, -114.679 )
-
-[node name="Chest3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 104.52, 270.843 )
-
-[node name="Chest4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 146.568, 272.845 )
-
-[node name="Chest5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 187.28, 271.51 )
-
-[node name="Chest6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -269.902, 61.2731 )
 [connection signal="coins_collected" from="YSort/Player/PlayerStats" to="CanvasLayer/CoinsDisplay" method="_on_PlayerStats_coins_collected"]
+[connection signal="potion_updated" from="YSort/Player/PlayerStats" to="CanvasLayer/PotionDisplay" method="_on_PlayerStats_potion_updated"]
 [connection signal="navigation_request" from="YSort/Enemies" to="." method="_on_Enemies_navigation_request"]
 
 [editable path="YSort/Player"]

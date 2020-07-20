@@ -12,7 +12,7 @@ func _ready():
 	healthBar.value = health
 
 func set_health(value):
-	health = value
+	health = max_health if value > max_health else value
 	if healthBar != null:
 		healthBar.value = health
 	if health <= 0:
