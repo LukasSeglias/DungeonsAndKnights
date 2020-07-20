@@ -934,21 +934,27 @@ position = Vector2( -236.692, 128.98 )
 
 [node name="Chest" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( -133.1, 88.3255 )
+amount = 0
 
 [node name="Chest2" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( 225.323, -114.679 )
 
 [node name="Chest3" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( 104.52, 270.843 )
+amount = 20
 
 [node name="Chest4" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( 146.568, 272.845 )
 
 [node name="Chest5" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( 187.28, 271.51 )
+amount = 3
+content = 1
 
 [node name="Chest6" parent="YSort/Collectables" instance=ExtResource( 2 )]
 position = Vector2( -269.902, 61.2731 )
+amount = 2
+content = 1
 
 [node name="PotionHeal" parent="YSort/Collectables" instance=ExtResource( 12 )]
 position = Vector2( -244.183, 59.6831 )

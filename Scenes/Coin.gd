@@ -13,6 +13,8 @@ func _on_body_entered(body):
 		visible = false
 		coinAudio.play()
 		body.collectCoins(1)
+	else:
+		hitBox.connect("body_entered", self, "_on_body_entered")
 
 func animationFinished():
 	queue_free()

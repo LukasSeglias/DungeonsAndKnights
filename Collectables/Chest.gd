@@ -1,7 +1,13 @@
 extends Collectable
 
+enum ChestContent {
+	COINS,
+	POTION_HEAL	
+}
+
 export var open = false setget set_open
-export(int) var coins = 50
+export(int) var amount = 50
+export(ChestContent) var content = ChestContent.COINS
 
 onready var animationPlayer = $AnimationPlayer
 
@@ -13,9 +19,13 @@ func can_take():
 
 func taken(body):
 	open = true
-	if(coins > 0):
+	if(amount > 0):
 		animationPlayer.play("full_open")
-		body.collectCoins(coins)
+		if content == ChestContent.COINS:
+			body.collectCoins(amount)
+		elif content == ChestContent.POTION_HEAL:
+			body.collectPotion(Potion.HEAL, amount)
+
 	else:
 		animationPlayer.play("empty_open")
 

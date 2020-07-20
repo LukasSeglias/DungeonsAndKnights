@@ -40,7 +40,8 @@ func _handleActionInput():
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyCollectable != null):
 			nearbyCollectable.take(self)
-	if(Input.is_action_just_pressed("potion_heal")):
+	if(Input.is_action_just_pressed("potion_heal") &&
+			stats.health < stats.max_health):
 		var healPotion = playerStats.takePotion(Potion.HEAL)
 		stats.health += healPotion * 50
 
