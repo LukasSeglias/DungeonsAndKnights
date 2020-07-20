@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://Collectables/Potion.gd"
 }, {
 "base": "Node2D",
+"class": "Trap",
+"language": "GDScript",
+"path": "res://Traps/Trap.gd"
+}, {
+"base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Weapons/Weapon.gd"
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "Direction": "",
 "Enemy": "",
 "Potion": "",
+"Trap": "",
 "Weapon": ""
 }
 

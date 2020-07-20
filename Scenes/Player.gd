@@ -16,6 +16,7 @@ onready var weaponSlot = $WeaponSlot
 onready var stats = $Stats
 onready var hitbox = $Hitbox
 onready var playerStats = $PlayerStats
+onready var hurtSound = $HurtSound
 
 var nearbyCollectable
 
@@ -90,6 +91,7 @@ func exitCollectable(collectable):
 
 
 func _on_Hurtbox_was_hurt(damage):
+	hurtSound.play()
 	stats.health -= damage
 
 

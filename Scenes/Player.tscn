@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stats/PlayerStats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sounds/hurt.wav" type="AudioStream" id=5]
 [ext_resource path="res://Weapons/WeaponSlot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Sprites/knight.png" type="Texture" id=10]
 
@@ -140,6 +141,9 @@ collision_layer = 2147483652
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -6.60712 )
 shape = SubResource( 6 )
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="was_hurt" from="Hurtbox" to="." method="_on_Hurtbox_was_hurt"]
 

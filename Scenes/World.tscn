@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=2]
+[gd_scene load_steps=121 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectables/Chest.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/World.gd" type="Script" id=10]
 [ext_resource path="res://Stats/StatusBar.gd" type="Script" id=11]
 [ext_resource path="res://Collectables/PotionHeal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Traps/GroundTrap.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -962,6 +963,8 @@ randomAmountMax = 5
 [node name="PotionHeal" parent="YSort/Collectables" instance=ExtResource( 12 )]
 position = Vector2( -241.285, 60.7181 )
 
+[node name="Traps" type="YSort" parent="YSort"]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = 2.0
@@ -978,6 +981,13 @@ script = ExtResource( 11 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0
+
+[node name="GroundTrap2" parent="." instance=ExtResource( 13 )]
+position = Vector2( -187.397, 95.8306 )
+
+[node name="GroundTrap" parent="." instance=ExtResource( 13 )]
+position = Vector2( -208.635, 95.8306 )
+activation_radius = 20
 [connection signal="collectables_updated" from="YSort/Player/PlayerStats" to="CanvasLayer/StatusBar" method="_on_PlayerStats_collectables_updated"]
 [connection signal="navigation_request" from="YSort/Enemies" to="." method="_on_Enemies_navigation_request"]
 
