@@ -956,7 +956,7 @@ position = Vector2( -269.902, 61.2731 )
 amount = 2
 content = 1
 
-[node name="PotionHeal" parent="." instance=ExtResource( 12 )]
+[node name="PotionHeal" parent="YSort/Collectables" instance=ExtResource( 12 )]
 position = Vector2( -241.285, 60.7181 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
