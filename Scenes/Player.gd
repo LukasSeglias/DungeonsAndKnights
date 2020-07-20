@@ -17,7 +17,7 @@ onready var stats = $Stats
 onready var hitbox = $Hitbox
 onready var playerStats = $PlayerStats
 
-var nearbyChest
+var nearbyCollectable
 
 func _ready():
 	pass
@@ -38,8 +38,8 @@ func _physics_process(delta):
 
 func _handleActionInput():
 	if(Input.is_action_just_pressed("action")):
-		if(nearbyChest != null):
-			nearbyChest.open(self)
+		if(nearbyCollectable != null):
+			nearbyCollectable.take(self)
 
 
 func _getMovementInputVector():
@@ -76,16 +76,15 @@ func collectCoins(coins):
 	playerStats.collectCoin(coins)
 
 
-func enterChest(chest):
-	if(!chest.open):
-		print("Near chest!")
-		nearbyChest = chest
+func enterCollectable(collectable):
+	print("Near collectable!")
+	nearbyCollectable = collectable	
 
 
-func exitChest(chest):
-	if(chest == nearbyChest):
-		print("Leave chest!")
-		nearbyChest = null
+func exitCollectable(collectable):
+	if(collectable == nearbyCollectable):
+		print("Leave collectable!")
+		nearbyCollectable = null
 
 
 func _on_Hurtbox_was_hurt(damage):
