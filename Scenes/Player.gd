@@ -6,8 +6,8 @@ const MAX_SPEED = 100
 
 export (int) var health = 100
 export (int) var damage = 20
-
 export (int) var weaponDistance = 10
+export (bool) var isPlayable = true
 
 var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
@@ -37,6 +37,9 @@ func _physics_process(delta):
 
 
 func _handleActionInput():
+	if not isPlayable:
+		return
+	
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyCollectable != null):
 			nearbyCollectable.take(self)
@@ -47,10 +50,13 @@ func _handleActionInput():
 
 
 func _getMovementInputVector():
-	return Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	).normalized()
+	if isPlayable:
+		return Vector2(
+			Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"), 
+			Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		).normalized()
+	else:
+		return Vector2.ZERO
 
 
 func _moveBasedOnInput(delta, input):

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/WinScreen.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stats/StatusBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/pixelated/pixelated.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 70
+custom_constants/margin_top = 40
+custom_constants/margin_left = 115
+custom_constants/margin_bottom = 90
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 115.0
+margin_top = 40.0
+margin_right = 250.0
+margin_bottom = 90.0
+custom_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 135.0
+margin_bottom = 34.0
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+text = "Win"
+
+[node name="StatusBar" parent="VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 39.0
+margin_right = 135.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Player" parent="VBoxContainer" instance=ExtResource( 2 )]
+position = Vector2( 46.2738, 79.9653 )
+isPlayable = false
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

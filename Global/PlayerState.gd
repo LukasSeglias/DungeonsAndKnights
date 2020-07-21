@@ -1,9 +1,6 @@
 extends Node
 
-var collectables = {
-	CollectableType.COIN: 0,
-	CollectableType.POTION_HEAL: 0
-}
+var collectables = {}
 var health = 0
 var hasSavedState = false
 
@@ -17,3 +14,8 @@ func save(stats, playerStats):
 	hasSavedState = true
 	health = stats.health
 	collectables = playerStats.collectables
+
+func clear():
+	hasSavedState = false
+	health = 0
+	collectables = {}

@@ -16,7 +16,7 @@ tile_data = PoolIntArray( -65538, 3, 0, -65537, 3, 1, -131072, 3, 1, -131071, 3,
 
 [node name="Ladder" parent="World/Other" index="0" instance=ExtResource( 1 )]
 position = Vector2( 213.046, 280.3 )
-scene_file = "res://Scenes/MainMenu.tscn"
+scene_file = "res://Scenes/WinScreen.tscn"
 
 [node name="Ork" parent="World/YSort/Enemies" index="0" instance=ExtResource( 2 )]
 position = Vector2( 156.673, 229.81 )

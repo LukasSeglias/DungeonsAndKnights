@@ -11,7 +11,6 @@ func _ready():
 	displays[CollectableType.COIN] = coinText
 	displays[CollectableType.POTION_HEAL] = potionHealText
 	_on_PlayerStats_collectables_updated(_collectables)
-	
 
 
 func _on_PlayerStats_collectables_updated(collectables):
