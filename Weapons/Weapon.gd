@@ -10,16 +10,14 @@ var direction = null setget set_direction
 var _damage = 0
 export (bool) var playingAttackAnimation = false
 
-func _ready():
-	pass
-	
+# Prefix like "Stab" to full animation name like "StabLeft" or "StabRight
+export (String) var attackAnimationNamePrefix = "Stab"
 
 func attack(damage):
 	_damage = damage
 	
 	if !playingAttackAnimation:
 		_playAttackAnimation()
-		sound.play()
 	
 func hasAttacked(body):
 	if body.is_in_group("Attackable") && _damage > 0:
@@ -40,9 +38,12 @@ func _playIdleAnimation():
 
 func _playAttackAnimation():
 	if direction == Direction.LEFT:
-		animationPlayer.play("StabLeft")
+		animationPlayer.play(attackAnimationNamePrefix + "Left")
 	if direction == Direction.RIGHT:
-		animationPlayer.play("StabRight")
+		animationPlayer.play(attackAnimationNamePrefix + "Right")
+
+func _playAttackSound():
+	sound.play()
 
 func set_direction(value):
 	if direction != value:

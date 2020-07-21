@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Enemy
 
 export (int) var detect_radius = 20
-export (bool) var show_radius = true
 export (int) var damage = 10
 export (int) var speed = 500
 export (int) var attack_delta = 1
@@ -28,13 +27,13 @@ var vis_color = Color(.867, .91, .247, 0.1)
 var previous_attack = 0;
 var _update_path_to_target_request = 0
 
-
 func _ready():
 	var shape = CircleShape2D.new()
 	shape.radius = detect_radius
 	detectionShape.shape = shape
 	stats.connect("no_health", self, "_on_Stats_no_health")
 	hurtbox.connect("was_hurt", self, "_on_Hurtbox_was_hurt")
+	weaponSlot.direction = Direction.RIGHT
 
 func _on_Stats_no_health():
 	var effect = deathEffect.instance()
@@ -44,7 +43,6 @@ func _on_Stats_no_health():
 
 func _on_Hurtbox_was_hurt(damage):
 	stats.health -= damage
-
 
 func _physics_process(delta):
 	update()
@@ -64,7 +62,6 @@ func _physics_process(delta):
 	else:
 		animationPlayer.play("Idle")
 
-
 func moveSpriteAgainstPlayer():
 	var collision = (position - target.position).normalized()
 	
@@ -77,14 +74,10 @@ func moveSpriteAgainstPlayer():
 	else:
 		pass # do not flip
 
-
 func goToPlayer(delta):
 	if path_to_target.size() > 0:
 		animationPlayer.play("Run")
 		move_along_path(path_to_target, speed * delta, delta)
-	#var velocity = (target.position - position).normalized() * speed * delta
-	#move_and_slide(velocity)
-
 
 func move_along_path(path: PoolVector2Array, distance : float, delta : float):
 	var start_point = position
@@ -93,19 +86,15 @@ func move_along_path(path: PoolVector2Array, distance : float, delta : float):
 		if distance <= distance_to_next and distance >= 0.0:
 			var velocity = (path[0] - start_point).normalized() * speed * delta
 			move_and_slide(velocity)
-			#position = start_point.linear_interpolate(path[0], distance / distance_to_next)
 			break
-		#elif distance < 0.0:
-			#position = path[0]
 		distance -= distance_to_next
 		start_point = path[0]
 		path.remove(0)
 
-
 func measureDistanceToPlayer():
 	var distance = position.distance_to(target.position)
 	return distance
-	
+
 func _on_detection_shape_body_entered(body):
 	# connect this to the "body_entered" signal
 	if target || !body.is_in_group("Player"):
@@ -127,10 +116,5 @@ func _update_path_to_target():
 		_navigationRequest()
 
 func _on_detection_shape_body_exited(body):
-	# connect this to the "body_exited" signal
 	if body == target:
 		target = null
-		
-func _draw():
-	if show_radius:
-		draw_circle(Vector2(), detect_radius, vis_color)

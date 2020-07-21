@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ork_warrior.png-51fa1b568013fba5671e2c9e1bb132a1.stex"
+path="res://.import/ork_elite.png-b28ed3b8b1a4760d1b50ab4ac0da22df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ork_warrior.png"
-dest_files=[ "res://.import/ork_warrior.png-51fa1b568013fba5671e2c9e1bb132a1.stex" ]
+source_file="res://Sprites/ork_elite.png"
+dest_files=[ "res://.import/ork_elite.png-b28ed3b8b1a4760d1b50ab4ac0da22df.stex" ]
 
 [params]
 

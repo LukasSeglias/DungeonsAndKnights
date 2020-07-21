@@ -38,6 +38,7 @@ func _switchWeapon(weaponScene):
 	weapon = weaponScene.instance()
 	weaponPosition.add_child(weapon)
 	weapon.connect("weapon_hurts", self, "_set_weapon_hurts")
+	weapon.set_direction(direction)
 
 func _set_weapon_name(name):
 	weapon_name = name

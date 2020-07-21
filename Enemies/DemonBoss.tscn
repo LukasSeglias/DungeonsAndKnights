@@ -22,6 +22,9 @@ health = 500
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0.0733342, -12.579 )
 
+[node name="WeaponSlot" parent="." index="6"]
+weapon_name = "WeaponBigHammer"
+
 [node name="Hitbox" parent="WeaponSlot" index="0"]
 position = Vector2( 14, -12 )
 

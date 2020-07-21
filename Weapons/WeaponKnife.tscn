@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/weapon_knife.png" type="Texture" id=1]
+[ext_resource path="res://Weapons/Weapon.tscn" type="PackedScene" id=2]
+
+[node name="WeaponKnife" instance=ExtResource( 2 )]
+playingAttackAnimation = false
+
+[node name="Sprite" parent="." index="0"]
+rotation = 1.72788
+texture = ExtResource( 1 )
