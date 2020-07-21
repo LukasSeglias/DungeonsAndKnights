@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/demon_boss.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Sounds/demon_dying.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.03425
+height = 6.01886
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 10.092
+height = 7.37409
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 8.05742
+height = 7.9931
 
 [node name="Enemy" instance=ExtResource( 2 )]
 detect_radius = 200
@@ -19,23 +31,39 @@ position = Vector2( -7.857, -32 )
 max_health = 500
 health = 500
 
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( 0, -2 )
+shape = SubResource( 1 )
+
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0.0733342, -12.579 )
+shape = SubResource( 2 )
 
 [node name="WeaponSlot" parent="." index="6"]
 weapon_name = "WeaponBigHammer"
 
 [node name="Hitbox" parent="WeaponSlot" index="0"]
-position = Vector2( 14, -12 )
+position = Vector2( 16, -12 )
+
+[node name="CollisionShape2D" parent="WeaponSlot/Hitbox" index="0"]
+shape = SubResource( 3 )
 
 [node name="HitboxPosition" parent="WeaponSlot" index="1"]
 position = Vector2( 0, -5 )
 
+[node name="Left" parent="WeaponSlot/HitboxPosition" index="0"]
+position = Vector2( -16, -7 )
+
+[node name="Right" parent="WeaponSlot/HitboxPosition" index="1"]
+position = Vector2( 16, -7 )
+
 [node name="WeaponPosition" parent="WeaponSlot" index="2"]
-position = Vector2( -4.26277, -7.68246 )
+position = Vector2( -3, -4 )
 
 [editable path="Hurtbox"]
 
 [editable path="WeaponSlot"]
 
 [editable path="WeaponSlot/Hitbox"]
+
+[editable path="WeaponSlot/HitboxPosition"]
