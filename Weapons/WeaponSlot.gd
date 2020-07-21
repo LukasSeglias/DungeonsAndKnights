@@ -5,7 +5,7 @@ onready var hitbox = $Hitbox
 export (String) var weapon_name = "WeaponSpear" setget _set_weapon_name
 
 var weapon
-var direction = Direction.LEFT setget set_direction
+var direction = null setget set_direction
 
 onready var weaponPosition = $WeaponPosition
 onready var hitboxPositionLeft = $HitboxPosition/Left
@@ -21,11 +21,14 @@ func hasAttacked(body):
 	weapon.hasAttacked(body)
 
 func set_direction(value):
-	weapon.set_direction(value)
-	if value == Direction.LEFT:
-		hitbox.position = hitboxPositionLeft.position
-	else:
-		hitbox.position = hitboxPositionRight.position
+	if direction != value:
+		direction = value
+		weapon.set_direction(value)
+		hitbox.disabled = true
+		if value == Direction.LEFT:
+			hitbox.position = hitboxPositionLeft.position
+		else:
+			hitbox.position = hitboxPositionRight.position
 
 func _switchWeapon(weaponScene):
 	if(weapon != null):
