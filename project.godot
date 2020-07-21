@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DungeonsAndKnights"
-run/main_scene="res://Scenes/StartScreen.tscn"
+run/main_scene="res://UI/StartScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -344,7 +344,7 @@ anims/TrapAnimation_OneWay = SubResource( 6 )
 
 [node name="Ladder" parent="World/Other" index="0" instance=ExtResource( 1 )]
 position = Vector2( 136, 504 )
-scene_file = "res://Scenes/WinScreen.tscn"
+scene_file = "res://UI/WinScreen.tscn"
 
 [node name="FountainRed" parent="World/Other" index="1" instance=ExtResource( 6 )]
 position = Vector2( 88, 143.5 )

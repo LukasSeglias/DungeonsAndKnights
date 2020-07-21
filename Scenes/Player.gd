@@ -31,15 +31,16 @@ func _physics_process(delta):
 	var input = _getMovementInputVector()
 	_playMovementAnimation(input)
 	_moveBasedOnInput(delta, input)
+	_handleInput()
+
+func _handleInput():
+	if not isPlayable:
+		return
 	_handleActionInput()
 	if(Input.is_action_just_pressed("attack")):
 		weaponSlot.attack(damage)
 
-
 func _handleActionInput():
-	if not isPlayable:
-		return
-	
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyInteractable != null):
 			nearbyInteractable.interact(self)
@@ -94,11 +95,9 @@ func exitInteractable(interactable):
 	if(interactable == nearbyInteractable):
 		nearbyInteractable = null
 
-
 func _on_Hurtbox_was_hurt(damage):
 	hurtSound.play()
 	stats.health -= damage
 
-
 func _on_Stats_no_health():
-	get_tree().change_scene("res://Scenes/GameOver.tscn")
+	get_tree().change_scene("res://UI/GameOver.tscn")
