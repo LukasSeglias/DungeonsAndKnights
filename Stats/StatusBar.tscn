@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/pixelated/pixelated.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/potion_heal.png" type="Texture" id=2]
 [ext_resource path="res://Images/coin.png" type="Texture" id=3]
 [ext_resource path="res://Stats/StatusBar.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/key.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -28,23 +29,44 @@ texture = ExtResource( 2 )
 
 [node name="PotionHealText" type="RichTextLabel" parent="."]
 margin_left = 14.0
-margin_right = 40.0
+margin_right = 34.0
 margin_bottom = 11.0
+rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 3
 custom_fonts/normal_font = SubResource( 1 )
 text = "0"
 scroll_active = false
 
 [node name="CoinTexture" type="TextureRect" parent="."]
-margin_left = 44.0
-margin_right = 50.0
-margin_bottom = 11.0
+anchor_top = 0.1
+anchor_bottom = 0.15
+margin_left = 38.0
+margin_right = 44.0
+margin_bottom = -11.0
+rect_min_size = Vector2( 6, 11 )
 texture = ExtResource( 3 )
 
 [node name="CoinText" type="RichTextLabel" parent="."]
-margin_left = 54.0
-margin_right = 80.0
+margin_left = 48.0
+margin_right = 68.0
 margin_bottom = 11.0
+rect_min_size = Vector2( 20, 11 )
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 2 )
+text = "0"
+scroll_active = false
+
+[node name="KeyTexture" type="TextureRect" parent="."]
+margin_left = 72.0
+margin_right = 77.0
+margin_bottom = 11.0
+texture = ExtResource( 5 )
+
+[node name="KeyText" type="RichTextLabel" parent="."]
+margin_left = 81.0
+margin_right = 101.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 20, 11 )
 size_flags_horizontal = 3
 custom_fonts/normal_font = SubResource( 2 )
 text = "0"

@@ -101,3 +101,6 @@ func _on_Hurtbox_was_hurt(damage):
 
 func _on_Stats_no_health():
 	get_tree().change_scene("res://UI/GameOver.tscn")
+
+func get_playerstats():
+	return playerStats

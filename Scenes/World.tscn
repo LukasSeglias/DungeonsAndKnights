@@ -866,10 +866,10 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StatusBar" parent="CanvasLayer" instance=ExtResource( 8 )]
-margin_left = 239.987
-margin_top = 1.25733
-margin_right = 319.987
-margin_bottom = 12.2573
+margin_left = 217.473
+margin_top = 1.65463
+margin_right = 318.473
+margin_bottom = 12.6546
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 1.0

@@ -2,5 +2,6 @@ class_name CollectableType
 
 enum {
 	COIN,
-	POTION_HEAL
+	POTION_HEAL,
+	KEY
 }

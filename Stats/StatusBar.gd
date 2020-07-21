@@ -3,6 +3,7 @@ extends HBoxContainer
 
 onready var coinText = $CoinText
 onready var potionHealText = $PotionHealText
+onready var keyText = $KeyText
 
 var displays = {}
 var _collectables = {}
@@ -10,6 +11,7 @@ var _collectables = {}
 func _ready():
 	displays[CollectableType.COIN] = coinText
 	displays[CollectableType.POTION_HEAL] = potionHealText
+	displays[CollectableType.KEY] = keyText
 	_on_PlayerStats_collectables_updated(_collectables)
 
 
