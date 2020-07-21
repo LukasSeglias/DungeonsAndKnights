@@ -52,11 +52,11 @@ tracks/0/keys = {
 "values": [ 6, 7, 8 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 4.00105
 height = 8.06418
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 height = 4.53938
 
 [node name="Chest" type="StaticBody2D"]
@@ -75,7 +75,7 @@ anims/mimic_open = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Interactable" parent="." instance=ExtResource( 4 )]
 interactionTargetPath = NodePath("..")
@@ -83,6 +83,6 @@ interactionTargetPath = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/InteractionArea" index="0"]
 position = Vector2( 0, -1 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [editable path="Interactable"]

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 const CollectEffect = preload("res://Effects/CollectCoinEffect.tscn")
 

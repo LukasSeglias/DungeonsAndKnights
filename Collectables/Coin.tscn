@@ -25,7 +25,7 @@ tracks/0/keys = {
 radius = 2.6146
 height = 1.16668
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

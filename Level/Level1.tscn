@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/World.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Traps/GroundTrap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Collectables/Coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Collectables/Chest.tscn" type="PackedScene" id=5]
@@ -11,6 +12,7 @@
 [ext_resource path="res://Enemies/OrkMinion.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Enemies/OrkSoldier.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Enemies/OrkElite.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Collectables/Key.tscn" type="PackedScene" id=13]
 
 [node name="Level1" type="Node2D"]
 
@@ -36,10 +38,10 @@ position = Vector2( 167.434, 344.688 )
 scene_file = "res://Level/Level2.tscn"
 
 [node name="FountainRed" parent="World/Other" index="1" instance=ExtResource( 8 )]
-position = Vector2( 120, 236.5 )
+position = Vector2( 120, 239.5 )
 
 [node name="FountainRed2" parent="World/Other" index="2" instance=ExtResource( 8 )]
-position = Vector2( 200, 236.5 )
+position = Vector2( 200, 239.5 )
 
 [node name="Player" parent="World/YSort" index="0"]
 position = Vector2( -260, 100 )
@@ -177,6 +179,9 @@ randomAmountMax = 5
 [node name="PotionHeal2" parent="World/YSort/Collectables" index="6" instance=ExtResource( 6 )]
 position = Vector2( -241.337, 60.965 )
 
+[node name="Key" parent="World/YSort/Collectables" index="7" instance=ExtResource( 13 )]
+position = Vector2( 159.267, -227.528 )
+
 [node name="Column" parent="World/YSort/Other" index="0" instance=ExtResource( 9 )]
 position = Vector2( 88, 72.5 )
 
@@ -188,5 +193,8 @@ position = Vector2( 232, 72.5 )
 
 [node name="Column3" parent="World/YSort/Other" index="3" instance=ExtResource( 9 )]
 position = Vector2( 232, 136.5 )
+
+[node name="Door" parent="World/YSort" index="5" instance=ExtResource( 2 )]
+position = Vector2( 160.25, 226.5 )
 
 [editable path="World"]
