@@ -112,7 +112,6 @@ func _update_path_to_target():
 	_update_path_to_target_request += 1
 	if _update_path_to_target_request > UPDATE_PATH_TO_TARGET_LIMIT:
 		_update_path_to_target_request = 0
-		print("Update path to target")
 		_navigationRequest()
 
 func _on_detection_shape_body_exited(body):

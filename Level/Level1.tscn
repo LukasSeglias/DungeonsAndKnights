@@ -195,6 +195,6 @@ position = Vector2( 232, 72.5 )
 position = Vector2( 232, 136.5 )
 
 [node name="Door" parent="World/YSort" index="5" instance=ExtResource( 2 )]
-position = Vector2( 160.25, 226.5 )
+position = Vector2( 160, 236.5 )
 
 [editable path="World"]
