@@ -5,11 +5,18 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
+onready var deathSound = $DeathSound
 
+var sound setget set_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if sound != null:
+		deathSound.stream = sound
+	deathSound.play()
+
+func set_sound(_sound):
+	sound = _sound
 
 func _on_DeathSound_finished():
 	queue_free()
@@ -21,5 +28,4 @@ script = SubResource( 1 )
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = 2.0
-autoplay = true
 [connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]

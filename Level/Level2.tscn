@@ -345,6 +345,10 @@ position = Vector2( 305.677, 229.388 )
 
 [editable path="World/Traps/GroundTrap"]
 
+[editable path="World/Traps/GroundTrap/Trap"]
+
+[editable path="World/Traps/GroundTrap/Trap/Hitbox"]
+
 [editable path="World/Traps/GroundTrap2"]
 
 [editable path="World/Traps/GroundTrap3"]

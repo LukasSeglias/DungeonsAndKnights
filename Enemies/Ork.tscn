@@ -15,10 +15,6 @@ texture = ExtResource( 3 )
 max_health = 60
 health = 60
 
-[node name="CollisionShape2D" parent="." index="3"]
-position = Vector2( 0, 0 )
-scale = Vector2( 1, 1 )
-
 [editable path="Hurtbox"]
 
 [editable path="WeaponSlot"]

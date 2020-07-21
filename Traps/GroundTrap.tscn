@@ -103,6 +103,9 @@ activation_radius = 150
 texture = ExtResource( 1 )
 hframes = 4
 
+[node name="CollisionShape2D" parent="Trap/Hitbox" index="0"]
+disabled = true
+
 [node name="TrapSound" parent="Trap" index="2"]
 stream = ExtResource( 4 )
 

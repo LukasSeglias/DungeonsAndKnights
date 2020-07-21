@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/demon_boss.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sounds/demon_dying.wav" type="AudioStream" id=3]
 
 [node name="Enemy" instance=ExtResource( 2 )]
 detect_radius = 200
 damage = 15
 speed = 1000
+death_sound = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0.353554, -15.1595 )

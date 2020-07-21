@@ -6,6 +6,7 @@ export (bool) var show_radius = true
 export (int) var damage = 10
 export (int) var speed = 500
 export (int) var attack_delta = 1
+export (AudioStream) var death_sound = null
 
 signal navigation_request(enemy, targetPosition)
 
@@ -36,9 +37,10 @@ func _ready():
 	hurtbox.connect("was_hurt", self, "_on_Hurtbox_was_hurt")
 
 func _on_Stats_no_health():
-	get_parent().add_child(deathEffect.instance())
+	var effect = deathEffect.instance()
+	effect.sound = death_sound
+	get_parent().add_child(effect)
 	queue_free()
-
 
 func _on_Hurtbox_was_hurt(damage):
 	stats.health -= damage
