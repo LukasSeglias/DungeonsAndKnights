@@ -35,7 +35,6 @@ func _ready():
 	stats.connect("no_health", self, "_on_Stats_no_health")
 	hurtbox.connect("was_hurt", self, "_on_Hurtbox_was_hurt")
 
-
 func _on_Stats_no_health():
 	get_parent().add_child(deathEffect.instance())
 	queue_free()

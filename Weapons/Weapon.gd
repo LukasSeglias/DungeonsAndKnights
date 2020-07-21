@@ -6,7 +6,7 @@ onready var sound = $AttackSound
 
 signal weapon_hurts(value)
 
-var direction = Direction.LEFT setget set_direction
+var direction = null setget set_direction
 var _damage = 0
 export (bool) var playingAttackAnimation = false
 

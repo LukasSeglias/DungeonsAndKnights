@@ -21,7 +21,7 @@ onready var hurtSound = $HurtSound
 var nearbyCollectable
 
 func _ready():
-	pass
+	weaponSlot.direction = Direction.RIGHT
 
 
 func _process(delta):
