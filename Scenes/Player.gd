@@ -22,11 +22,10 @@ var nearbyCollectable
 
 func _ready():
 	weaponSlot.direction = Direction.RIGHT
-
+	PlayerState.load(stats, playerStats)
 
 func _process(delta):
 	pass
-
 
 func _physics_process(delta):
 	var input = _getMovementInputVector()
@@ -83,6 +82,8 @@ func enterCollectable(collectable):
 	print("Near collectable!")
 	nearbyCollectable = collectable	
 
+func save_properties():
+	PlayerState.save(stats, playerStats)
 
 func exitCollectable(collectable):
 	if(collectable == nearbyCollectable):

@@ -60,6 +60,10 @@ config/name="DungeonsAndKnights"
 run/main_scene="res://Scenes/StartScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerState="*res://Global/PlayerState.gd"
+
 [display]
 
 window/size/width=320
