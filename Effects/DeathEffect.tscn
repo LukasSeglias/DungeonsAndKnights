@@ -9,7 +9,6 @@ onready var deathSound = $DeathSound
 
 var sound setget set_sound
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if sound != null:
 		deathSound.stream = sound

@@ -1,13 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Collectables/Collectable.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectables/Chest.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/chest.png" type="Texture" id=3]
-[ext_resource path="res://Sounds/chest_opening.wav" type="AudioStream" id=4]
+[ext_resource path="res://Level/Interactable.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "empty_open"
-length = 0.3
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -53,19 +52,37 @@ tracks/0/keys = {
 "values": [ 6, 7, 8 ]
 }
 
-[node name="Chest" instance=ExtResource( 1 )]
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 4.00105
+height = 8.06418
+
+[sub_resource type="CapsuleShape2D" id=6]
+height = 4.53938
+
+[node name="Chest" type="StaticBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
 texture = ExtResource( 3 )
 vframes = 3
 hframes = 3
-frame = 6
 
-[node name="CollectableSound" parent="." index="3"]
-stream = ExtResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/empty_open = SubResource( 1 )
 anims/full_open = SubResource( 2 )
 anims/mimic_open = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 5 )
+
+[node name="Interactable" parent="." instance=ExtResource( 4 )]
+interactionTargetPath = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/InteractionArea" index="0"]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[editable path="Interactable"]

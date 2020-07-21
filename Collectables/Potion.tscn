@@ -1,15 +1,19 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Sounds/collect_potion.wav" type="AudioStream" id=1]
 [ext_resource path="res://Collectables/Collectable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Collectables/Potion.gd" type="Script" id=3]
 
-[node name="Potion" instance=ExtResource( 2 )]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.8875
+height = 0.97501
+
+[node name="Potion" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Sprite" parent="." index="0"]
-position = Vector2( 0, 2 )
+[node name="Collectable" parent="." instance=ExtResource( 2 )]
 
-[node name="CollectableSound" parent="." index="3"]
-stream = ExtResource( 1 )
-[connection signal="finished" from="CollectableSound" to="." method="_on_CollectableSound_finished"]
+[node name="CollisionShape2D" parent="Collectable/Area2D" index="0"]
+shape = SubResource( 1 )
+[connection signal="taken" from="Collectable" to="." method="_on_Collectable_taken"]
+
+[editable path="Collectable"]

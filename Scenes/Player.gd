@@ -18,7 +18,7 @@ onready var hitbox = $Hitbox
 onready var playerStats = $PlayerStats
 onready var hurtSound = $HurtSound
 
-var nearbyCollectable
+var nearbyInteractable
 
 func _ready():
 	weaponSlot.direction = Direction.RIGHT
@@ -41,8 +41,8 @@ func _handleActionInput():
 		return
 	
 	if(Input.is_action_just_pressed("action")):
-		if(nearbyCollectable != null):
-			nearbyCollectable.take(self)
+		if(nearbyInteractable != null):
+			nearbyInteractable.interact(self)
 	if(Input.is_action_just_pressed("potion_heal") &&
 			stats.health < stats.max_health):
 		var healPotion = playerStats.takePotion(CollectableType.POTION_HEAL)
@@ -84,17 +84,15 @@ func _playMovementAnimation(input):
 func collect(collectableType, amount):
 	playerStats.collect(collectableType, amount)
 
-func enterCollectable(collectable):
-	print("Near collectable!")
-	nearbyCollectable = collectable	
-
 func save_properties():
 	PlayerState.save(stats, playerStats)
 
-func exitCollectable(collectable):
-	if(collectable == nearbyCollectable):
-		print("Leave collectable!")
-		nearbyCollectable = null
+func enterInteractable(interactable):
+	nearbyInteractable = interactable	
+
+func exitInteractable(interactable):
+	if(interactable == nearbyInteractable):
+		nearbyInteractable = null
 
 
 func _on_Hurtbox_was_hurt(damage):

@@ -104,6 +104,7 @@ texture = ExtResource( 1 )
 hframes = 4
 
 [node name="CollisionShape2D" parent="Trap/Hitbox" index="0"]
+rotation = 1.5708
 disabled = true
 
 [node name="TrapSound" parent="Trap" index="2"]
