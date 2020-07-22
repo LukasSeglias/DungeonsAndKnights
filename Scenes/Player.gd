@@ -43,6 +43,7 @@ func _handleInput():
 func _handleActionInput():
 	if(Input.is_action_just_pressed("action")):
 		if(nearbyInteractable != null):
+			print("Interact!!")
 			nearbyInteractable.interact(self)
 	if(Input.is_action_just_pressed("potion_heal") &&
 			stats.health < stats.max_health):
@@ -89,6 +90,7 @@ func save_properties():
 	PlayerState.save(stats, playerStats)
 
 func enterInteractable(interactable):
+	print("Enter interactable")
 	nearbyInteractable = interactable	
 
 func exitInteractable(interactable):
