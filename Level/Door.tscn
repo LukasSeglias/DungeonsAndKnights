@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/door.png" type="Texture" id=1]
 [ext_resource path="res://Level/Interactable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Level/Door.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/creak.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -33,6 +34,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.2
@@ -56,6 +69,18 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
@@ -91,5 +116,8 @@ polygon = PoolVector2Array( -27, 0, -27, 7.6, -13, 7.6, -13, 0 )
 [node name="BlockingBox" type="CollisionPolygon2D" parent="."]
 position = Vector2( 19, 0 )
 polygon = PoolVector2Array( -32, 0, -32, 7.6, -6, 7.6, -6, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [editable path="Interactable"]

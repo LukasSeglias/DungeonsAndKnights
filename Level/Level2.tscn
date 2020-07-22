@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Level/Ladder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/DemonBoss.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://Collectables/PotionHeal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sprites/skull.png" type="Texture" id=9]
 [ext_resource path="res://Level/Column.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Level/Door.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Switch/Switch.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Level/DoorSwitchAdapter.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 length = 2.5
@@ -275,6 +278,11 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="CapsuleShape2D" id=7]
+
+[sub_resource type="CapsuleShape2D" id=8]
+height = 35.6225
+
 [node name="Level2" type="Node2D"]
 
 [node name="World" parent="." instance=ExtResource( 3 )]
@@ -404,6 +412,30 @@ position = Vector2( 184, 217 )
 [node name="Column4" parent="World/Other" index="17" instance=ExtResource( 10 )]
 position = Vector2( 72, 217 )
 
+[node name="Switch" parent="World/Other" index="18" instance=ExtResource( 12 )]
+position = Vector2( 128.183, 153.789 )
+interactionTargetPath = NodePath("../DoorSwitchAdapter")
+
+[node name="CollisionShape2D" parent="World/Other/Switch/Area2D" index="0"]
+rotation = 1.5708
+shape = SubResource( 7 )
+
+[node name="DoorSwitchAdapter" parent="World/Other" index="19" instance=ExtResource( 13 )]
+doorPath = NodePath("../../YSort/Other/Door")
+closeIfSwitchOn = true
+
+[node name="Switch2" parent="World/Other" index="20" instance=ExtResource( 12 )]
+position = Vector2( 123.129, 86.5985 )
+interactionTargetPath = NodePath("../DoorSwitchAdapter2")
+
+[node name="CollisionShape2D" parent="World/Other/Switch2/Area2D" index="0"]
+position = Vector2( 5, 15 )
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="DoorSwitchAdapter2" parent="World/Other" index="21" instance=ExtResource( 13 )]
+doorPath = NodePath("../../YSort/Other/Door")
+
 [node name="Enemy" parent="World/YSort/Enemies" index="0" instance=ExtResource( 2 )]
 position = Vector2( 124.961, 253.521 )
 
@@ -415,6 +447,10 @@ position = Vector2( 88.1322, 474.757 )
 
 [node name="PotionHeal" parent="World/YSort/Collectables" index="2" instance=ExtResource( 8 )]
 position = Vector2( 39.6042, -24.9351 )
+
+[node name="Door" parent="World/YSort/Other" index="0" instance=ExtResource( 11 )]
+position = Vector2( 127.589, 140.41 )
+openManually = true
 
 [editable path="World"]
 
@@ -433,3 +469,7 @@ position = Vector2( 39.6042, -24.9351 )
 [editable path="World/Traps/GroundTrap5"]
 
 [editable path="World/Traps/GroundTrap6"]
+
+[editable path="World/Other/Switch"]
+
+[editable path="World/Other/Switch2"]
