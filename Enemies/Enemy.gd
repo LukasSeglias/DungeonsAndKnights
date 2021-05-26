@@ -15,8 +15,11 @@ onready var sprite = $Sprite
 onready var stats = $Stats
 onready var hurtbox = $Hurtbox
 onready var weaponSlot = $WeaponSlot
+onready var bloodPosition = $BloodPosition
 
 const deathEffect = preload("res://Effects/DeathEffect.tscn")
+const BloodEffect = preload("res://Effects/BloodEffect.tscn")
+
 const UPDATE_PATH_TO_TARGET_LIMIT = 30
 
 var path_to_target : = PoolVector2Array()
@@ -43,6 +46,9 @@ func _on_Stats_no_health():
 
 func _on_Hurtbox_was_hurt(damage):
 	stats.health -= damage
+	var blood = BloodEffect.instance()
+	blood.color = 'green'
+	bloodPosition.add_child(blood)
 
 func _physics_process(delta):
 	update()

@@ -79,6 +79,9 @@ collision_mask = 4
 
 [node name="WeaponPosition" parent="WeaponSlot" index="2"]
 position = Vector2( -3, -2 )
+
+[node name="BloodPosition" type="Position2D" parent="."]
+position = Vector2( 0, -2.7 )
 [connection signal="body_entered" from="Visibility" to="." method="_on_detection_shape_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_detection_shape_body_exited"]
 

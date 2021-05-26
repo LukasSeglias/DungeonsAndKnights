@@ -144,6 +144,9 @@ shape = SubResource( 6 )
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="BloodPosition" type="Position2D" parent="."]
+position = Vector2( 0, -4.5 )
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="was_hurt" from="Hurtbox" to="." method="_on_Hurtbox_was_hurt"]
 

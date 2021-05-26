@@ -17,6 +17,9 @@ onready var stats = $Stats
 onready var hitbox = $Hitbox
 onready var playerStats = $PlayerStats
 onready var hurtSound = $HurtSound
+onready var bloodPosition = $BloodPosition
+
+const BloodEffect = preload("res://Effects/BloodEffect.tscn")
 
 var nearbyInteractable
 
@@ -99,6 +102,9 @@ func exitInteractable(interactable):
 
 func _on_Hurtbox_was_hurt(damage):
 	hurtSound.play()
+	var blood = BloodEffect.instance()
+	blood.color = 'red'
+	bloodPosition.add_child(blood)
 	stats.health -= damage
 
 func _on_Stats_no_health():

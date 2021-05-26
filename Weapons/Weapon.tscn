@@ -3,7 +3,7 @@
 [ext_resource path="res://Weapons/Weapon.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/sword.wav" type="AudioStream" id=3]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "IdleLeft"
 length = 0.4
 loop = true
@@ -43,8 +43,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -83,8 +95,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "SmashLeft"
 length = 0.7
 tracks/0/type = "value"
@@ -144,7 +168,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -203,7 +227,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "StabLeft"
 length = 0.2
 tracks/0/type = "value"
@@ -276,8 +300,20 @@ tracks/4/keys = {
 "method": "_weaponHurts"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -349,8 +385,20 @@ tracks/4/keys = {
 "method": "_weaponHurts"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -379,20 +427,20 @@ tracks/1/keys = {
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource( 1 )
-playingAttackAnimation = true
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = 1.5708
+position = Vector2( 0, 0.742299 )
+rotation = 4.55531
 offset = Vector2( 0, -7.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/IdleLeft = SubResource( 7 )
-anims/IdleRight = SubResource( 8 )
-anims/SmashLeft = SubResource( 6 )
-anims/SmashRight = SubResource( 9 )
-anims/StabLeft = SubResource( 10 )
-anims/StabRight = SubResource( 11 )
-anims/Swing = SubResource( 12 )
+anims/IdleLeft = SubResource( 1 )
+anims/IdleRight = SubResource( 2 )
+anims/SmashLeft = SubResource( 3 )
+anims/SmashRight = SubResource( 4 )
+anims/StabLeft = SubResource( 5 )
+anims/StabRight = SubResource( 6 )
+anims/Swing = SubResource( 7 )
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
